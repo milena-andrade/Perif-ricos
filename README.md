@@ -1,4 +1,4 @@
-# 🌡️🔦 Monitoramento Ambiental — Desafio 01 CBTIAAP
+# 🌡️🔦 Monitoramento — Desafio 01 CBTIAAP
 
 Protótipo **Arduino UNO** que monitora **luminosidade, temperatura (DHT11) e umidade**. O estado atual é exibido em um **LCD 16 × 2**; quando algum parâmetro sai da faixa segura, **LEDs** mudam de cor e um **buzzer** dispara.
 
@@ -58,6 +58,7 @@ Protótipo **Arduino UNO** que monitora **luminosidade, temperatura (DHT11) e 
 1. Abra https://www.tinkercad.com/things/dUIiLKyi1jI](https://www.tinkercad.com/things/dUIiLKyi1jI-desafio-automacao-perifericos/editel?returnTo=%2Fthings%2FdUIiLKyi1jI&sharecode=d9JQxzLJblUT5D6rpTXKYEm6FmJUI7h6LQAqyx3F1qk)
 2. Clique em **Start Simulation**
 3. Use os sliders do sensor DHT11 e da luz para reproduzir os cenários abaixo.
+4. Segue vídeo https://www.youtube.com/watch?v=fpgiWTr8pxE
 ```
 
 ## 🖼️ Cenários demonstrativos
