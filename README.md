@@ -78,25 +78,4 @@ Protótipo em Arduino que **lê luminosidade, temperatura (DHT11) e umidade** e 
 | **Estabilidade do DHT11** no Tinkercad          | Aguardado 2 s no `setup()` + verificação de `isnan()` nas leituras.                              |
 | **Contraste do LCD**                            | Potenciômetro de 10 kΩ em V0.                                                                    |
 
----
-
-## 📂 Estrutura
-
-```
-├── docs/
-│   └── circuit.png      # imagem do circuito
-├── monitoramento_ambiental.ino  # código‑fonte
-├── LICENSE
-└── README.md
-```
-
----
-
-## 🙋‍♀️ Autoria
-
-**Milena Costa de Andrade** – Desenvolvedora e entusiasta de automação residencial.
-
-## 📜 Licença
-
-Projeto sob licença MIT.
 
