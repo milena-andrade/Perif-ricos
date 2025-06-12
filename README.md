@@ -66,12 +66,12 @@ Protótipo **Arduino UNO** que monitora **luminosidade, temperatura (DHT11) e 
 | ---------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
 | **Visão geral**                    | ![image](https://github.com/user-attachments/assets/b3b340b3-1c8b-42ab-8201-abc3c9499d76)
  | Arranjo físico dos componentes                         |
-| **Luminosidade — Ambiente escuro** | ![Escuro](docs/print_luminosidade.png)     | LCD exibe "Ambiente escuro" · LED verde aceso          |
-| **Temperatura alta (> 15 °C)**     | ![Temp alta](docs/print_temp_alta.png)     | LCD exibe "Temp. Alta" · LED amarelo · buzzer ativo    |
-| **Umidade alta (> 70 %)**          | ![Umid alta](docs/print_umidade_alta.png)  | LCD exibe "Umidade Alta" · LED vermelho · buzzer ativo |
-
-> Substitua as imagens‐placeholder por capturas reais e mantenha os mesmos nomes.
-
+| **Luminosidade — Ambiente escuro** | ![image](https://github.com/user-attachments/assets/bb1367ef-8d98-45a6-95a7-87909a7f3f82)
+    | LCD exibe "Ambiente escuro" · LED verde aceso          |
+| **Temperatura alta (> 15 °C)**     | ![image](https://github.com/user-attachments/assets/0f92cd50-006b-49ed-a6e2-7c9e1bbca8d3)
+    | LCD exibe "Temp. Alta" · LED amarelo · buzzer ativo    |
+| **Umidade alta (> 70 %)**          | ![image](https://github.com/user-attachments/assets/9d45c726-5cf9-40e3-af36-a78a18c6bbe2)
+  | LCD exibe "Umidade Alta" · LED vermelho · buzzer ativo |
 
 
 ## 🚧 Desafios & soluções
