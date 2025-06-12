@@ -1,1 +1,1 @@
-# Perif-ricos
+# Perifericos
