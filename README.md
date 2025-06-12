@@ -172,3 +172,8 @@ Este projeto demonstra como **automatizar o monitoramento de um ambiente** utili
 
 **Resumo:** este projeto prova que, com poucos componentes e a flexibilidade do Arduino, é possível **automatizar o acompanhamento de variáveis ambientais**, alertar usuários em tempo real e exibir dados de forma intuitiva, servindo de base para sistemas maiores — desde estufas e terrários até pequenos laboratórios ou salas de TI.
 
+**Integrantes:**
+Alice da Silva Marinho Gomes - CB3025772
+Matheus Leandro Terra Luciano - CB3024881
+Milena Costa de Andrade - CB3024881
+Vinicius do Nascimento Ayres - CB3025675
