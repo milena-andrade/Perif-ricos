@@ -1,12 +1,9 @@
 # 🌡️🔦 Monitoramento Ambiental — Desafio 01 CBTIAAP
 
 Protótipo **Arduino UNO** que monitora **luminosidade, temperatura (DHT11) e umidade**. O estado atual é exibido em um **LCD 16 × 2**; quando algum parâmetro sai da faixa segura, **LEDs** mudam de cor e um **buzzer** dispara.
+#Diagrama
+![Uploading image.png…]()
 
-<p align="center">
-  <img src="docs/circuit.png" width="600" alt="Diagrama do circuito no Tinkercad"/>
-![image](https://github.com/user-attachments/assets/6ccdc660-469d-4851-9dfd-d0e77d885c65)
-
-</p>
 
 > Este README segue as <a href="https://www.alura.com.br/artigos/escrever-bom-readme">boas práticas da Alura</a> 📚
 
