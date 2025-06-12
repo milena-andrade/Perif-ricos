@@ -55,7 +55,7 @@ Protótipo **Arduino UNO** que monitora **luminosidade, temperatura (DHT11) e 
 ### 1. Simulação no Tinkercad
 
 ```text
-1. Abra https://www.tinkercad.com/things/dUIiLKyi1jI
+1. Abra https://www.tinkercad.com/things/dUIiLKyi1jI](https://www.tinkercad.com/things/dUIiLKyi1jI-desafio-automacao-perifericos/editel?returnTo=%2Fthings%2FdUIiLKyi1jI&sharecode=d9JQxzLJblUT5D6rpTXKYEm6FmJUI7h6LQAqyx3F1qk)
 2. Clique em **Start Simulation**
 3. Use os sliders do sensor DHT11 e da luz para reproduzir os cenários abaixo.
 ```
