@@ -1,200 +1,190 @@
-🔧 Monitoramento Ambiental – Desafio 01 CBTIAAP
+# 🌡️🔦 Monitoramento Ambiental — Desafio 01 CBTIAAP
 
-Protótipo em Arduino que lê luminosidade, temperatura (DHT11) e umidade e informa, em tempo real, se cada variável está dentro dos limites configurados. Tudo é mostrado em um LCD 16×2; quando algo sai do aceitável, LEDs mudam de cor e um buzzer dispara.
+Protótipo **Arduino UNO** que monitora **luminosidade, temperatura (DHT11) e umidade**. O estado atual é exibido em um **LCD 16 × 2**; quando algum parâmetro sai da faixa segura, **LEDs** mudam de cor e um **buzzer** dispara.
 
-Este README segue boas práticas descritas no artigo da Alura sobre documentação de projetos.
+<p align="center">
+  <img src="docs/circuit.png" width="600" alt="Diagrama do circuito no Tinkercad"/>
+</p>
 
-📌 Funcionalidades
+> Este README segue as <a href="https://www.alura.com.br/artigos/escrever-bom-readme">boas práticas da Alura</a> 📚
 
-Média de 5 leituras a cada 5 s para suavizar ruídos.
+---
 
-Três faixas de luminosidade → LEDs verde/ amarelo/ vermelho.
+## ✨ Funcionalidades principais
 
-Faixas ideias de temperatura (10 – 15 °C) e umidade (50 – 70 %) exibidas no LCD.
+| # | Recurso                        | Descrição                                                   |
+| - | ------------------------------ | ----------------------------------------------------------- |
+| 1 | Média de 5 leituras ⏱️         | Suaviza ruídos a cada 5 s (`millis`).                       |
+| 2 | Três faixas de luminosidade 💡 | Verde ≤ 30 %, Amarelo 31 – 69 %, Vermelho ≥ 70 %.           |
+| 3 | Faixa ideal de temperatura 🌡️ | 10 – 15 °C. Fora disso: alerta.                             |
+| 4 | Faixa ideal de umidade 💧      | 50 – 70 %. Fora disso: alerta.                              |
+| 5 | LCD cíclico 📺                 | Alterna Luz → Temperatura → Umidade a cada ciclo.           |
+| 6 | Hierarquia de alertas 🔔       | Temperatura > Umidade > Luminosidade para evitar conflitos. |
 
-Alertas visuais/sonoros automáticos fora dos limites.
+---
 
-LCD alterna automaticamente entre Luz → Temperatura → Umidade.
+## 🔌 Componentes
 
-Hierarquia de prioridade de alertas para evitar conflito de LEDs/buzzer.
+| Qtde   | Componente                  | Função                         |
+| ------ | --------------------------- | ------------------------------ |
+| 1      | Arduino UNO                 | Processamento e I/O            |
+| 1      | Sensor **DHT11**            | Temperatura (°C) + Umidade (%) |
+| 1      | **Fotorresistor** + R 10 kΩ | Luminosidade (%)               |
+| 3      | **LEDs** (G/Y/R)            | Indicadores visuais            |
+| 1      | **Buzzer passivo**          | Alerta sonoro                  |
+| 1      | **LCD 16×2** (modo 4 bits)  | Interface textual              |
+| 1      | Potenciômetro 10 kΩ         | Ajuste de contraste do LCD     |
+| vários | Resistores 220 Ω            | Limite de corrente para LEDs   |
+| 1      | Breadboard + jumpers        | Montagem                       |
 
-🧩 Componentes e o que faz cada um
+### Mapa de pinos Arduino ↔ componentes
 
-Qtde
+| Pino Arduino | Componente    | Observação |
+| ------------ | ------------- | ---------- |
+| 12           | LCD RS        |            |
+| 10           | LCD E         |            |
+| 5–2          | LCD D4–D7     |            |
+| 6            | Buzzer        |            |
+| 7            | LED Verde     |            |
+| 8            | LED Amarelo   |            |
+| 9            | LED Vermelho  |            |
+| A0           | DHT11 (DATA)  |            |
+| A1           | Fotorresistor |            |
+| 5 V / GND    | Todos         |            |
 
-Componente
+---
 
-Função no sistema
+## ▶️ Como rodar
 
-1
+### 1. Simulação no Tinkercad
 
-Arduino UNO
+```text
+1. Abra https://www.tinkercad.com/things/dUIiLKyi1jI
+2. Clique em **Start Simulation**
+3. Use os sliders do sensor DHT11 e da luz para reproduzir os cenários abaixo.
+```
 
-Cérebro do projeto – lê sensores, decide alertas e atualiza LCD.
+## 🖼️ Cenários demonstrativos
 
-1
+| Cenário                            | Print                                      | O que observar                                         |
+| ---------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
+| **Visão geral**                    | ![Circuito completo](docs/print_geral.png) | Arranjo físico dos componentes                         |
+| **Luminosidade — Ambiente escuro** | ![Escuro](docs/print_luminosidade.png)     | LCD exibe "Ambiente escuro" · LED verde aceso          |
+| **Temperatura alta (> 15 °C)**     | ![Temp alta](docs/print_temp_alta.png)     | LCD exibe "Temp. Alta" · LED amarelo · buzzer ativo    |
+| **Umidade alta (> 70 %)**          | ![Umid alta](docs/print_umidade_alta.png)  | LCD exibe "Umidade Alta" · LED vermelho · buzzer ativo |
 
-Sensor DHT11
+> Substitua as imagens‐placeholder por capturas reais e mantenha os mesmos nomes.
 
-Mede temperatura (°C) e umidade relativa (%).
 
-1
 
-Fotorresistor + resistor 10 kΩ
+## 🚧 Desafios & soluções
 
-Varia a resistência conforme a luz; convertemos a leitura analógica em % de luminosidade.
+| Desafio               | Abordagem                                    |
+| --------------------- | -------------------------------------------- |
+| Ruído nas leituras    | Média de 5 amostras + pequeno `delay(100)`   |
+| Conflito de saídas    | Prioridade Temp > Umid > Luz                 |
+| Estabilidade do DHT11 | Delay inicial de 2 s + verificação `isnan()` |
+| Contraste do LCD      | Potenciômetro ligado entre V0 e GND/5 V      |
 
-3
+---------------------------------------------------------------------------------------
 
-LEDs (verde, amarelo, vermelho)
+### Texto explicativo – Projeto de Automação com Arduino
 
-Indicadores visuais rápidos: verde = ok/escuro, amarelo = meia‑luz, vermelho = alerta.
+Este projeto demonstra como **automatizar o monitoramento de um ambiente** utilizando uma placa **Arduino UNO** e alguns componentes eletrônicos de baixo custo. A ideia é criar um sistema autônomo que:
 
-1
+1. **Meça em tempo real** três variáveis essenciais — **luminosidade, temperatura e umidade**;
+2. **Analise** se cada variável está dentro da faixa de operação configurada;
+3. **Alerta visual e sonoramente** sempre que algum valor sai do limite seguro;
+4. **Exiba informações** claras em um **display LCD 16×2**, para que qualquer pessoa possa verificar o estado do ambiente de relance.
 
-Buzzer passivo
+---
 
-Emite som quando qualquer variável sai da faixa segura.
+#### Como o sistema funciona (fluxo de automação)
 
-1
+1. **Coleta de dados**
 
-LCD 16×2 (modo 4 bits)
+   * **Fotoresistor** lê o nível de luz ambiente (0 % – 100 %).
+   * **Sensor DHT11** fornece temperatura em °C e umidade relativa em %.
+   * Cada sensor é lido **cinco vezes** a cada cinco segundos; as leituras são somadas e a média é calculada para filtrar ruídos.
 
-Interface textual: mostra status de luz, temperatura ou umidade.
+2. **Processamento & decisão**
 
-1
+   * O código compara os valores médios com faixas ideais:
 
-Potenciômetro 10 kΩ
+     * **Luminosidade**:
 
-Ajusta contraste do LCD.
+       * 0 – 30 %  → ambiente escuro (LED verde).
+       * 31 – 69 % → meia-luz (LED amarelo).
+       * ≥ 70 %     → muito claro (LED vermelho + buzzer).
+     * **Temperatura**:
 
-Diversos
+       * 10 – 15 °C → ideal.
+       * < 10 °C   → temperatura baixa (LED amarelo + buzzer).
+       * > 15 °C   → temperatura alta (LED amarelo + buzzer).
+     * **Umidade**:
 
-Resistores 220 Ω
+       * 50 – 70 % → ideal.
+       * < 50 %   → umidade baixa (LED vermelho + buzzer).
+       * > 70 %   → umidade alta (LED vermelho + buzzer).
 
-Limitam corrente dos LEDs e protegem o fotorresistor.
+   * Para evitar que dois alertas diferentes acendam LEDs ao mesmo tempo, foi criada uma **hierarquia de prioridade**:
+     **Temperatura** > **Umidade** > **Luminosidade**.
 
-1
+3. **Ação & feedback**
 
-Breadboard + jumpers
+   * **LEDs** indicam rapidamente o estado geral (verde = OK, amarelo = atenção, vermelho = crítico).
+   * **Buzzer** emite som contínuo quando há condição crítica.
+   * **LCD** alterna automaticamente entre três telas:
 
-Montagem sem solda, facilitando alterações.
+     1. Situação de luminosidade;
+     2. Situação da temperatura;
+     3. Situação da umidade.
+        Cada tela mostra texto descritivo (“Ambiente escuro”, “Temp. Alta”, “Umidade Alta”, etc.) e o valor numérico correspondente.
 
-Mapa de pinos
+---
 
-Arduino
+#### Componentes utilizados
 
-Conectado a
+| Componente                          | Função no sistema                                     |
+| ----------------------------------- | ----------------------------------------------------- |
+| **Arduino UNO**                     | Cérebro do projeto; lê sensores e controla atuadores. |
+| **DHT11**                           | Mede temperatura e umidade.                           |
+| **Fotoresistor + resistor 10 kΩ**   | Converte intensidade de luz em sinal analógico.       |
+| **LCD 16×2**                        | Mostra mensagens e valores para o usuário.            |
+| **LEDs verde / amarelo / vermelho** | Feedback visual rápido.                               |
+| **Buzzer passivo**                  | Alerta sonoro quando algo está fora dos limites.      |
+| **Potenciômetro 10 kΩ**             | Ajusta contraste do LCD.                              |
+| **Resistores 220 Ω**                | Limitam corrente dos LEDs.                            |
+| **Breadboard + jumpers**            | Facilita a montagem sem solda.                        |
 
-Descrição
+---
 
-12
+#### Demonstrações (prints)
 
-LCD RS
+1. **Luminosidade – Ambiente escuro**
+   *LCD exibe:* “Luminosidade: Ambiente escuro”
+   *LED ativo:* Verde
 
-10
+2. **Temperatura – Alta**
+   *LCD exibe:* “Temp. Alta – 24 °C”
+   *LED ativo:* Amarelo *Buzzer ligado*
 
-LCD E
+3. **Umidade – Alta**
+   *LCD exibe:* “Umidade Alta – 90 %”
+   *LED ativo:* Vermelho *Buzzer ligado*
 
-5 – 2
+> Essas capturas ajudam a comprovar que o sistema reage corretamente a cada condição testada.
 
-LCD D4 – D7
+---
 
-6
+#### Possíveis extensões
 
-Buzzer
+* **Registro em cartão SD** ou envio para um servidor MQTT para análise histórica.
+* **Módulo Wi-Fi (ESP8266/ESP32)** para monitoramento remoto via aplicativo ou dashboard web.
+* **Ajuste dinâmico de limites** através de botões ou interface serial, sem recompilar o código.
+* **Caixa impressa em 3D** para acomodar todos os componentes com acabamento profissional.
 
-7
+---
 
-LED Verde
-
-8
-
-LED Amarelo
-
-9
-
-LED Vermelho
-
-A0
-
-DHT11 data
-
-A1
-
-Fotorresistor
-
-GND / 5 V
-
-Todos os componentes
-
-
-
-🚀 Como executar
-
-1. Simulação (Tinkercad)
-
-Acesse: https://www.tinkercad.com/things/dUIiLKyi1jI.
-
-Clique em Start Simulation.
-
-Use os sliders do DHT11 e da luz para testar os três cenários descritos abaixo.
-
-2. Placa real
-
-Baixe monitoramento_ambiental.ino.
-
-Grave no Arduino UNO.
-
-Monte o circuito conforme o diagrama acima.
-
-🖼️ Demonstrações (prints)
-
-Salve as quatro imagens em docs/ e referencie conforme abaixo.
-
-1. Visão geral do circuito
-![image](https://github.com/user-attachments/assets/6e87a8c3-7c7e-4cf4-9b1f-b97411ae2ef2)
-
-2. Cenário – Luminosidade (Ambiente escuro)
-![image](https://github.com/user-attachments/assets/c57c7b37-eef9-4d41-a342-81df871472c2)
-
-LCD exibe: "Luminosidade: Ambiente escuro".
-
-LED verde aceso; buzzer silencioso.
-
-3. Cenário – Temperatura alta (> 15 °C)
-![image](https://github.com/user-attachments/assets/b6c27e5a-f44d-4cd8-8322-117ca7f79928)
-
-LCD exibe: "Temp. Alta 24,8 °C".
-
-LED amarelo aceso; buzzer ativo.
-
-4. Cenário – Umidade alta (> 70 %)
-![image](https://github.com/user-attachments/assets/22058985-9469-47c2-b0bd-779ea82b742d)
-LCD exibe: "Umidade Alta 90 %".
-
-LED vermelho aceso; buzzer ativo.
-
-
-🛠️ Dificuldades encontradas e soluções
-
-Desafio
-
-Solução
-
-Ruído nas leituras
-
-Média de 5 amostras e delay(100).
-
-Conflito de saídas
-
-Prioridade Temp > Umid > Luz.
-
-Estabilidade do DHT11
-
-Aguardar 2 s no setup() + checar isnan().
-
-Contraste do LCD
-
-Potenciômetro de 10 kΩ em V0.
+**Resumo:** este projeto prova que, com poucos componentes e a flexibilidade do Arduino, é possível **automatizar o acompanhamento de variáveis ambientais**, alertar usuários em tempo real e exibir dados de forma intuitiva, servindo de base para sistemas maiores — desde estufas e terrários até pequenos laboratórios ou salas de TI.
 
