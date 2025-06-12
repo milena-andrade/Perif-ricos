@@ -4,6 +4,8 @@ Protótipo **Arduino UNO** que monitora **luminosidade, temperatura (DHT11) e 
 
 <p align="center">
   <img src="docs/circuit.png" width="600" alt="Diagrama do circuito no Tinkercad"/>
+![image](https://github.com/user-attachments/assets/6ccdc660-469d-4851-9dfd-d0e77d885c65)
+
 </p>
 
 > Este README segue as <a href="https://www.alura.com.br/artigos/escrever-bom-readme">boas práticas da Alura</a> 📚
@@ -68,7 +70,8 @@ Protótipo **Arduino UNO** que monitora **luminosidade, temperatura (DHT11) e 
 
 | Cenário                            | Print                                      | O que observar                                         |
 | ---------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
-| **Visão geral**                    | ![Circuito completo](docs/print_geral.png) | Arranjo físico dos componentes                         |
+| **Visão geral**                    | ![image](https://github.com/user-attachments/assets/b3b340b3-1c8b-42ab-8201-abc3c9499d76)
+ | Arranjo físico dos componentes                         |
 | **Luminosidade — Ambiente escuro** | ![Escuro](docs/print_luminosidade.png)     | LCD exibe "Ambiente escuro" · LED verde aceso          |
 | **Temperatura alta (> 15 °C)**     | ![Temp alta](docs/print_temp_alta.png)     | LCD exibe "Temp. Alta" · LED amarelo · buzzer ativo    |
 | **Umidade alta (> 70 %)**          | ![Umid alta](docs/print_umidade_alta.png)  | LCD exibe "Umidade Alta" · LED vermelho · buzzer ativo |
